@@ -8,11 +8,71 @@ with st.sidebar:
     st.title("**Correcting Behaviours MAP**")
     page = st.radio("Menu?",
                     [
-                        "CB Therapy",
-                        "DB therapy",
+                        "Home",
+                        "Making goals",
+                        "Distress therapy",
+                        "mood"
                     ])
+if page== "Home":
+    st.title("**Correcting Behaviours MAP**")
 
-if page == "CB Therapy":
+elif page == "mood":
+    mood = ["Sad",
+            "happy",
+            "neutral",
+            "awwful",
+            "Frustrated",
+            "Startled",
+            "hurt",
+            "Empty",
+            "fragile",
+            "lonely",
+            "grief",
+            "uncertain",
+            "Disappointed"]
+    st.caption("Mood and skills")
+    moodSelected= st.radio("What do you feel?", mood)
+    with st.container(border=True):
+        if moodSelected == "Sad":
+            skills = ["Supplication",
+                      "Indeed ,hearts find comfort in His remembrance",]
+        elif moodSelected=="uncertain":
+            skills=["Tawakkul",
+                    "God is the only protector"]
+        elif moodSelected=="Frustrated":
+            skills=["وَوَضَعْنَا عَنكَ وِزْرَكَ","Indeed he loves those "
+                                                 "who put their "
+                                                 "trust in Him",
+                                                 "And which favor of your"
+                                                 " Lord will you deny!"]
+
+        elif moodSelected == "happy":
+            skills = [ "Generosity","He is Gani"]
+        elif moodSelected == "hurt":
+            skills = [ "gratitude","He is Al-hakeem!",
+                       "Surely! in remembrance "
+                                   "of Allah do heart finds comfort"]
+        elif moodSelected == "fragile":
+            skills = ["Then to Allah is your return",
+                      "He alone is the refugee"]
+        elif moodSelected == "grief":
+            skills = ["Seek guidance through sbr and salah",
+                      "إِنَّ مَعَ الْعُسْرِ يُسْرًا"
+                      "He is Al-Lateef"]
+        elif moodSelected == "Startled":
+            skills =["أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ",
+            "Indeed! He is most capable of anything"]
+
+        elif moodSelected == "lonely":
+            skills= ["وَإِلَىٰ رَبِّكَ فَارْغَب",
+                     "He is Everywhere"]
+        else:
+            skills=["He is alpha and He is omega",
+                    "He knows what you know not!"]
+
+        for i in range(len(skills)):
+            st.write(skills[i])
+elif page == "Making goals":
     st.caption("Cognitive Behavioural therapy")
     tab_goal, tab_values, tab_activities = st.tabs(["Goals", "Values", "Activities"])
 
@@ -30,7 +90,7 @@ if page == "CB Therapy":
                         "6 months",
                         "A year",
                         ]
-            st.multiselect("what is the duration of experiment", duration)
+            st.multiselect("what is the duration?", duration)
             goal = st.text_input("What is the goal?", key="goal")
             measure = st.text_input("How are you going to measure the progress?", key="measure")
 
@@ -142,7 +202,7 @@ if page == "CB Therapy":
             st.title("**for i in tasks"
                      " correlate m in mood**")
     # -----------------------
-if page == "DB therapy":
+elif page == "DB therapy":
     st.title("Distress tolerance therapy")
     st.header("step one: Relax")
 
